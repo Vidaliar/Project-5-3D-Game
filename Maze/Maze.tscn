@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://bcbwrbsjah711"]
+[gd_scene load_steps=28 format=3 uid="uid://bcbwrbsjah711"]
 
 [ext_resource type="Script" path="res://Maze/Maze.gd" id="1"]
 [ext_resource type="Script" path="res://UI/Menu.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://620cvomsy7si" path="res://Player/Player.tscn" id="3_t858h"]
+[ext_resource type="Texture2D" uid="uid://hlod86rb2urt" path="res://Assets/survivorMaleB.png" id="4_vpx1m"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ej5nb"]
 
@@ -180,6 +181,9 @@ bind/43/pose = Transform3D(0.984979, -0.0764081, 0.154848, -0.169555, -0.597668,
 bind/44/name = &"RightToes"
 bind/44/bone = -1
 bind/44/pose = Transform3D(-0.992803, 0.00958511, -0.119373, -0.119664, -0.039574, 0.992026, 0.00478277, 0.999171, 0.0404359, -0.340618, -0.128335, -0.0149813)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3ltj"]
+albedo_texture = ExtResource("4_vpx1m")
 
 [sub_resource type="Animation" id="Animation_romfj"]
 resource_name = "Attack"
@@ -5441,6 +5445,7 @@ bones/44/scale = Vector3(1, 1, 1)
 [node name="characterMedium" type="MeshInstance3D" parent="Player/Root2/Skeleton3D"]
 mesh = SubResource("ArrayMesh_cy33n")
 skin = SubResource("Skin_qlhmy")
+surface_material_override/0 = SubResource("StandardMaterial3D_r3ltj")
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Player"]
 libraries = {
