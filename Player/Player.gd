@@ -4,7 +4,7 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const SCROLL_SPEED = 1.0
-const MOUSE_SENSITIVITY = 0.02
+const MOUSE_SENSITIVITY = 0.005
 const MOUSE_RANGE = 1.2
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
