@@ -31,6 +31,7 @@ var tiles = [
 	,preload("res://Maze/Tile13.tscn")
 	,preload("res://Maze/Tile14.tscn")
 	,preload("res://Maze/Tile15.tscn")
+	,preload("res://Maze/Tile16.tscn")
 ]
 
 var tile_size = 2 						# 2-meter tiles

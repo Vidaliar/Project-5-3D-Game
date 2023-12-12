@@ -1,5 +1,7 @@
 extends Node
 
+var coins = 0
+
 func _ready():
 	process_mode = PROCESS_MODE_ALWAYS		# global should never be paused
 
@@ -15,3 +17,6 @@ func _unhandled_input(event):
 			else:
 				menu.hide()
 				get_tree().paused = false
+func _physics_process(delta):
+	if Global.coins == 5:
+		pass

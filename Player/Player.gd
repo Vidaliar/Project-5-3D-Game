@@ -2,34 +2,36 @@ extends CharacterBody3D
 
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
-const SCROLL_SPEED = 1.0
+const JUMP_VELOCITY = 30
 const MOUSE_SENSITIVITY = 0.005
 const MOUSE_RANGE = 1.2
+var played = false
+var destination_position : Vector3 = Vector3(2.0, 1.109, -2.678)
+var destination_position2 : Vector3 = Vector3(-4.0, 1.109, 13.103)
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _unhandled_input(event):
+	# if the mouse has moved
 	if event is InputEventMouseMotion:
+		# up-down motion, applied to the $Pivot
 		$Pivot.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
-		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
+		# make sure we can't look inside ourselves 🙂
 		$Pivot.rotation.x = clamp($Pivot.rotation.x, -MOUSE_RANGE, MOUSE_RANGE)
+		# left-right motion, applied to the Player
+		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
 
 func _physics_process(delta):
-	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-	# Switch cameras
-	if Input.is_action_just_pressed("Switch"):
-		if $Overhead.current:
-			$Pivot/Camera.current = true
-		else:
-			$Overhead.current = true
-			
-		
 
-	var input_dir = Input.get_vector("Left", "Right", "Forward", "Back")
+	# Handle Jump.
+	if Input.is_action_just_pressed("Jump") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+	
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var input_dir = Input.get_vector("Right", "Left", "Back", "Forward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED

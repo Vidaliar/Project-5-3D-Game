@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://c2ehvw0ipvs04"]
+
+[ext_resource type="Script" path="res://Maze/Coin.gd" id="1_qqo2u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2q3d1"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_10vst"]
+albedo_color = Color(1, 0.843137, 0, 1)
+metallic = 0.6
+roughness = 0.5
+anisotropy_enabled = true
+anisotropy = 0.73
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_f2i54"]
+material = SubResource("StandardMaterial3D_10vst")
+height = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lta4f"]
+albedo_color = Color(0.286275, 0.313726, 0.341176, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dv6ak"]
+material = SubResource("StandardMaterial3D_lta4f")
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rxbp2"]
+size = Vector3(2, 0.1, 2)
+
+[node name="Tile17" type="Node3D"]
+
+[node name="Coin" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16483, 0)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_qqo2u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0180506, 0.161956, -0.000837177)
+shape = SubResource("BoxShape3D_2q3d1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Coin"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0278666, 0)
+mesh = SubResource("CylinderMesh_f2i54")
+skeleton = NodePath("")
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_dv6ak")
+
+[node name="Ground_Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_rxbp2")

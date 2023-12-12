@@ -1,4 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://620cvomsy7si"]
+[gd_scene load_steps=21 format=3 uid="uid://620cvomsy7si"]
+
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_d6rq2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_riley"]
 radius = 1.0
@@ -5042,14 +5044,18 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+script = ExtResource("1_d6rq2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2, 2.08165e-12)
+visible = false
 shape = SubResource("CapsuleShape3D_riley")
 
 [node name="Root" type="Node3D" parent="."]
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Root"]
+visible = false
 bones/0/name = "LeftFootCtrl"
 bones/0/parent = -1
 bones/0/rest = Transform3D(-4.76837e-07, -2.98023e-08, -1, -0.449956, -0.893051, 2.08616e-07, -0.893051, 0.449956, 3.57628e-07, 0.204209, 0.222795, 0.316176)
